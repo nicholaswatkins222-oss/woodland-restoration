@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Woodland Restoration LLC — Free Estimates</title>
+  <meta name="description" content="Contact Woodland Restoration LLC for a free on-site estimate. Decks, fencing, gates, pergolas, and retaining walls in Lake, LaPorte, and Porter counties.">
+  <link rel="icon" type="image/svg+xml" href="brand_assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar" role="banner">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" aria-label="Woodland Restoration — Home">
+      <img src="brand_assets/logo.svg" alt="Woodland Restoration LLC">
+    </a>
+    <nav class="navbar__nav" role="navigation" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary navbar__cta">Get a Free Quote</a>
+    <button class="navbar__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="mobile-menu__close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary" style="margin-top:16px;justify-content:center;">Get a Free Quote</a>
+</div>
+
+<!-- PAGE HERO -->
+<main>
+<section class="page-hero" aria-labelledby="page-heading">
+  <div class="container">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      <span>Contact</span>
+    </div>
+    <h1 id="page-heading">Get In Touch</h1>
+    <p>Tell us about your project and we'll schedule a free on-site estimate. No obligation, no pressure — just honest advice and a fair quote.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CONTACT FORM + INFO
+══════════════════════════════════════ -->
+<section class="section" aria-labelledby="contact-heading">
+  <div class="container">
+    <h2 id="contact-heading" class="sr-only">Contact Form</h2>
+    <div class="contact-grid">
+
+      <!-- Form -->
+      <div class="reveal">
+        <div class="contact-form">
+          <h2 style="margin-bottom:8px;font-size:1.6rem">Request a Free Estimate</h2>
+          <p style="color:var(--text-mid);font-size:0.9rem;margin-bottom:32px">We'll respond within 1 business day and can usually schedule an estimate within the week.</p>
+
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
+                <input type="text" id="first-name" name="first_name" required autocomplete="given-name" placeholder="Ross">
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last_name" autocomplete="family-name" placeholder="Smith">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(800) 555-0100">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service…</option>
+                <option value="deck">Deck (new build or repair)</option>
+                <option value="fencing">Fencing</option>
+                <option value="gate">Gate (manual or electric)</option>
+                <option value="pergola">Pergola / Outdoor Structure</option>
+                <option value="retaining-wall">Retaining Wall</option>
+                <option value="agricultural">Agricultural Fencing</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="address">Project Address or City</label>
+              <input type="text" id="address" name="address" autocomplete="street-address" placeholder="e.g., 123 Main St, Hebron IN or just &quot;Valparaiso&quot;">
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us About Your Project <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
+              <textarea id="message" name="message" required placeholder="Describe what you're looking for — size, materials, timeline, any questions…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              Send My Request
+            </button>
+          </form>
+          <div class="form-success" id="form-success" role="alert">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Message sent!</strong> We'll be in touch within 1 business day.
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info reveal reveal-delay-1">
+        <div class="contact-info__card">
+          <h3>Contact Woodland Restoration</h3>
+          <div class="contact-info__item">
+            <div class="contact-info__icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></div>
+            <div class="contact-info__text">
+              <strong>Phone / Text</strong>
+              <a href="tel:8058635349">(805) 863-5349</a>
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <div class="contact-info__icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
+            <div class="contact-info__text">
+              <strong>Email</strong>
+              <a href="mailto:WoodlandRestorationLLC@gmail.com">WoodlandRestorationLLC@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <div class="contact-info__icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
+            <div class="contact-info__text">
+              <strong>Direct Email</strong>
+              <a href="mailto:Ross@AOL.com">Ross@AOL.com</a>
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <div class="contact-info__icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
+            <div class="contact-info__text">
+              <strong>Service Area</strong>
+              <p>Lake, LaPorte &amp; Porter Counties, Indiana</p>
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <div class="contact-info__icon"><i class="fa-solid fa-clock" aria-hidden="true"></i></div>
+            <div class="contact-info__text">
+              <strong>Availability</strong>
+              <p>Flexible scheduling — call, text, or email anytime</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust callouts -->
+        <div style="background:var(--green-pale);border:1px solid rgba(45,106,31,0.2);border-radius:var(--radius-lg);padding:24px;">
+          <h4 style="font-size:0.9rem;color:var(--green-dark);margin-bottom:14px;font-family:var(--font-b);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">What to Expect</h4>
+          <ul style="display:flex;flex-direction:column;gap:10px;">
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--text-mid)"><i class="fa-solid fa-check" style="color:var(--green-mid);margin-top:3px;flex-shrink:0" aria-hidden="true"></i> Free on-site estimate, no obligation</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--text-mid)"><i class="fa-solid fa-check" style="color:var(--green-mid);margin-top:3px;flex-shrink:0" aria-hidden="true"></i> Clear written quote within a few days</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--text-mid)"><i class="fa-solid fa-check" style="color:var(--green-mid);margin-top:3px;flex-shrink:0" aria-hidden="true"></i> We handle all permits and utility locates</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--text-mid)"><i class="fa-solid fa-check" style="color:var(--green-mid);margin-top:3px;flex-shrink:0" aria-hidden="true"></i> 5-year workmanship guarantee</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     VENDOR RESOURCES
+══════════════════════════════════════ -->
+<section class="vendors-section" aria-labelledby="vendors-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="vendors-coming">
+        <i class="fa-solid fa-clock" aria-hidden="true"></i>
+        Coming Soon
+      </div>
+      <div class="section-divider"></div>
+      <h2 id="vendors-heading">Trusted Vendor Resources</h2>
+      <p style="color:var(--text-mid);max-width:520px">We'll be adding direct links to our trusted material suppliers and partners — the same sources we use on every job. Check back soon.</p>
+    </div>
+    <div class="vendors-grid">
+      <div class="vendor-card">
+        <div class="vendor-card__icon"><i class="fa-solid fa-store" aria-hidden="true"></i></div>
+        <h4>Lumber &amp; Decking</h4>
+        <p>Trusted supplier links coming soon</p>
+      </div>
+      <div class="vendor-card">
+        <div class="vendor-card__icon"><i class="fa-solid fa-fence" aria-hidden="true"></i></div>
+        <h4>Fencing Materials</h4>
+        <p>Trusted supplier links coming soon</p>
+      </div>
+      <div class="vendor-card">
+        <div class="vendor-card__icon"><i class="fa-solid fa-door-open" aria-hidden="true"></i></div>
+        <h4>Gate &amp; Hardware</h4>
+        <p>Trusted supplier links coming soon</p>
+      </div>
+      <div class="vendor-card">
+        <div class="vendor-card__icon"><i class="fa-solid fa-industry" aria-hidden="true"></i></div>
+        <h4>Other Suppliers</h4>
+        <p>Trusted supplier links coming soon</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <img src="brand_assets/logo.svg" alt="Woodland Restoration LLC">
+        </div>
+        <p>Custom decks, fencing, gates, pergolas, and retaining walls built with craft and guaranteed for 5 years. Serving Lake, LaPorte, and Porter counties since 2015.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#decks">Decks</a></li>
+          <li><a href="services.html#fencing">Fencing</a></li>
+          <li><a href="services.html#gates">Gates</a></li>
+          <li><a href="services.html#pergolas">Pergolas</a></li>
+          <li><a href="services.html#retaining-walls">Retaining Walls</a></li>
+          <li><a href="services.html#agricultural">Agricultural Fencing</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <address>
+          <a href="tel:8058635349">(805) 863-5349</a><br>
+          <a href="mailto:WoodlandRestorationLLC@gmail.com">WoodlandRestorationLLC@gmail.com</a><br><br>
+          Hebron, Indiana<br>
+          Serving Lake, LaPorte &amp; Porter Counties
+        </address>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2025 Woodland Restoration LLC. All rights reserved.</span>
+      <span>BBB A+ Accredited &nbsp;·&nbsp; 5-Year Workmanship Guarantee</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

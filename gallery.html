@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Gallery | Woodland Restoration LLC</title>
+  <meta name="description" content="Browse completed deck, fencing, gate, pergola, and retaining wall projects by Woodland Restoration LLC — serving Lake, LaPorte, and Porter counties.">
+  <link rel="icon" type="image/svg+xml" href="brand_assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar" role="banner">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" aria-label="Woodland Restoration — Home">
+      <img src="brand_assets/logo.svg" alt="Woodland Restoration LLC">
+    </a>
+    <nav class="navbar__nav" role="navigation" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary navbar__cta">Get a Free Quote</a>
+    <button class="navbar__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="mobile-menu__close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary" style="margin-top:16px;justify-content:center;">Get a Free Quote</a>
+</div>
+
+<!-- PAGE HERO -->
+<main>
+<section class="page-hero" aria-labelledby="page-heading">
+  <div class="container">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      <span>Gallery</span>
+    </div>
+    <h1 id="page-heading">Project Gallery</h1>
+    <p>A look at what we've built — decks, fences, gates, pergolas, and more across Indiana. Real projects, real craftsmanship.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     GALLERY
+══════════════════════════════════════ -->
+<section class="section" aria-labelledby="gallery-heading">
+  <div class="container">
+    <h2 id="gallery-heading" class="sr-only">Project Photos</h2>
+
+    <!-- Filter Tabs -->
+    <div class="gallery-filters" role="group" aria-label="Filter projects by type">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All Projects</button>
+      <button class="filter-btn" data-filter="decks" aria-pressed="false">Decks</button>
+      <button class="filter-btn" data-filter="fencing" aria-pressed="false">Fencing</button>
+      <button class="filter-btn" data-filter="gates" aria-pressed="false">Gates</button>
+      <button class="filter-btn" data-filter="other" aria-pressed="false">Other</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="gallery-grid">
+
+      <!-- Decks -->
+      <div class="gallery-item reveal" data-category="decks">
+        <img src="https://placehold.co/600x450/3a2810/c49a6c?text=Deck+%231" alt="Custom cedar deck build">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Decks</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1" data-category="decks">
+        <img src="https://placehold.co/600x450/4a3820/d4a870?text=Deck+%232" alt="Trex composite deck with railing">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Decks</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" data-category="decks">
+        <img src="https://placehold.co/600x450/3a2810/c49a6c?text=Deck+%233" alt="Two-level deck with custom stairs">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Decks</span>
+        </div>
+      </div>
+
+      <!-- Fencing -->
+      <div class="gallery-item reveal" data-category="fencing">
+        <img src="https://placehold.co/600x450/1e4d0f/4a8c35?text=Fence+%231" alt="Custom wood privacy fence">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Fencing</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1" data-category="fencing">
+        <img src="https://placehold.co/600x450/2d5018/5a9c40?text=Fence+%232" alt="Wrought iron fence installation">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Fencing</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" data-category="fencing">
+        <img src="https://placehold.co/600x450/1e4d0f/4a8c35?text=Fence+%233" alt="Chain link fence with vinyl coating">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Fencing</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="fencing">
+        <img src="https://placehold.co/600x450/2d5018/5a9c40?text=Fence+%234" alt="PVC vinyl fence residential">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Fencing</span>
+        </div>
+      </div>
+
+      <!-- Gates -->
+      <div class="gallery-item reveal reveal-delay-1" data-category="gates">
+        <img src="https://placehold.co/600x450/4a2e12/8a5e3a?text=Gate+%231" alt="Custom driveway gate with electric operator">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Gates</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" data-category="gates">
+        <img src="https://placehold.co/600x450/3a2010/7a5030?text=Gate+%232" alt="Wrought iron double gate entry">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Gates</span>
+        </div>
+      </div>
+
+      <!-- Other (Pergolas / Retaining Walls / Agricultural) -->
+      <div class="gallery-item reveal" data-category="other">
+        <img src="https://placehold.co/600x450/1e4d0f/4a8c35?text=Pergola+%231" alt="Cedar pergola attached to home">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Pergolas</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1" data-category="other">
+        <img src="https://placehold.co/600x450/3a2810/c49a6c?text=Retaining+Wall" alt="Block retaining wall with landscaping">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Retaining Walls</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" data-category="other">
+        <img src="https://placehold.co/600x450/2d5018/5a9c40?text=Ag+Fencing" alt="Agricultural fence for livestock property">
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__tag">Agricultural</span>
+        </div>
+      </div>
+
+    </div><!-- /gallery-grid -->
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section--alt" aria-labelledby="gallery-cta-heading">
+  <div class="container" style="text-align:center">
+    <p class="section-label">Start Your Project</p>
+    <div class="section-divider c"></div>
+    <h2 id="gallery-cta-heading">Have a Project in Mind?</h2>
+    <p style="color:var(--text-mid);max-width:480px;margin:0 auto 32px">Get a free on-site estimate and see what Woodland Restoration can build for you.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn-primary">
+        <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+        Request a Free Estimate
+      </a>
+      <a href="services.html" class="btn btn-outline">
+        <i class="fa-solid fa-list" aria-hidden="true"></i>
+        View All Services
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <img src="brand_assets/logo.svg" alt="Woodland Restoration LLC">
+        </div>
+        <p>Custom decks, fencing, gates, pergolas, and retaining walls built with craft and guaranteed for 5 years. Serving Lake, LaPorte, and Porter counties since 2015.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#decks">Decks</a></li>
+          <li><a href="services.html#fencing">Fencing</a></li>
+          <li><a href="services.html#gates">Gates</a></li>
+          <li><a href="services.html#pergolas">Pergolas</a></li>
+          <li><a href="services.html#retaining-walls">Retaining Walls</a></li>
+          <li><a href="services.html#agricultural">Agricultural Fencing</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <address>
+          <a href="tel:8058635349">(805) 863-5349</a><br>
+          <a href="mailto:WoodlandRestorationLLC@gmail.com">WoodlandRestorationLLC@gmail.com</a><br><br>
+          Hebron, Indiana<br>
+          Serving Lake, LaPorte &amp; Porter Counties
+        </address>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2025 Woodland Restoration LLC. All rights reserved.</span>
+      <span>BBB A+ Accredited &nbsp;·&nbsp; 5-Year Workmanship Guarantee</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
