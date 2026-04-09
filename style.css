@@ -4,10 +4,10 @@
 
 /* ── Variables ── */
 :root {
-  --brown-dark:   #5C3D21;
-  --brown-mid:    #9B6E45;
-  --brown-light:  #D4B08A;
-  --brown-pale:   #EDE0CF;
+  --brown-dark:   #7A5C3E;
+  --brown-mid:    #C49A72;
+  --brown-light:  #E0C8A8;
+  --brown-pale:   #F5EEE5;
   --green-dark:   #3D6B4F;
   --green-mid:    #537A5F;
   --green-light:  #72A87E;
@@ -684,6 +684,77 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   font-size: 1.1rem;
   color: var(--text-mid);
   max-width: 540px;
+}
+
+/* ── Services Page Full-Bleed Hero ── */
+.services-page-hero {
+  position: relative;
+  min-height: 52vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 160px 0 80px;
+}
+.services-page-hero__bg {
+  position: absolute;
+  inset: 0;
+}
+.services-page-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+.services-page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(15,10,5,0.78) 0%, rgba(30,52,28,0.62) 100%);
+}
+.services-page-hero .container {
+  position: relative;
+  z-index: 2;
+}
+.services-page-hero .breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.825rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 16px;
+}
+.services-page-hero .breadcrumb a { color: var(--brown-light); }
+.services-page-hero .breadcrumb i { font-size: 0.65rem; }
+.services-page-hero h1 {
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.services-page-hero h1 span { color: var(--brown-light); }
+.services-page-hero p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.78);
+  max-width: 540px;
+}
+.services-page-hero .hero__badge {
+  margin-bottom: 20px;
+}
+
+/* ── Service Detail image — full nature panel ── */
+.service-detail__img--photo {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.service-detail__img--photo img {
+  opacity: 0;
+  position: absolute;
+}
+
+/* ── Nature section divider ── */
+.nature-divider {
+  height: 5px;
+  background: linear-gradient(to right, var(--brown-pale), var(--green-pale), var(--brown-pale));
+  border: none;
+  margin: 0;
 }
 
 /* ── Services Detail ── */
