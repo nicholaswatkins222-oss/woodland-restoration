@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Woodland Restoration LLC — Free Estimates</title>
   <meta name="description" content="Contact Woodland Restoration LLC for a free on-site estimate. Decks, fencing, gates, pergolas, and retaining walls in Lake, LaPorte, and Porter counties.">
-  <link rel="icon" type="image/svg+xml" href="brand_assets/logo.svg">
+  <link rel="icon" type="image/svg+xml" href="brand_assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -98,13 +98,11 @@
               <select id="service" name="service" required>
                 <option value="" disabled selected>Select a service…</option>
                 <option value="deck">Deck (new build or repair)</option>
-                <option value="wood-restoration">Wood Restoration (staining / refinishing)</option>
+                <option value="fencing-residential">Fencing — Residential (privacy, dog-secure, yard)</option>
+                <option value="fencing-commercial">Fencing — Commercial (property security, perimeter)</option>
+                <option value="gate">Gate (manual or automated)</option>
                 <option value="pergola">Pergola / Outdoor Structure</option>
-                <option value="trellis">Trellis / Climbing Plant Structure</option>
-                <option value="fencing">Fencing</option>
-                <option value="gate">Gate (manual or electric)</option>
-                <option value="retaining-wall">Retaining Wall</option>
-                <option value="agricultural">Agricultural Fencing</option>
+                <option value="site-work">Site Work, Retaining Wall or Drainage</option>
                 <option value="other">Other / Not Sure</option>
               </select>
             </div>
@@ -115,6 +113,25 @@
             <div class="form-group">
               <label for="message">Tell Us About Your Project <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
               <textarea id="message" name="message" required placeholder="Describe what you're looking for — size, materials, timeline, any questions…"></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="start-date">Estimated Start Date</label>
+                <input type="text" id="start-date" name="start_date" placeholder="e.g. Spring 2026, ASAP, Not sure yet">
+              </div>
+              <div class="form-group">
+                <label for="existing-structure">Existing Structure to Remove?</label>
+                <select id="existing-structure" name="existing_structure">
+                  <option value="" selected>Select…</option>
+                  <option value="yes">Yes — needs demo &amp; haul-away</option>
+                  <option value="no">No — new install only</option>
+                  <option value="not-sure">Not sure</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="budget">Approximate Budget</label>
+              <input type="text" id="budget" name="budget" placeholder="e.g. $5,000–$10,000 or 'not sure yet'">
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px">
               <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
@@ -248,12 +265,11 @@
       <div class="footer__col">
         <h4>Services</h4>
         <ul>
-          <li><a href="services.html#decks">Decks</a></li>
+          <li><a href="services.html#decks">Custom Decks</a></li>
           <li><a href="services.html#fencing">Fencing</a></li>
           <li><a href="services.html#gates">Gates</a></li>
-          <li><a href="services.html#pergolas">Pergolas</a></li>
-          <li><a href="services.html#retaining-walls">Retaining Walls</a></li>
-          <li><a href="services.html#agricultural">Agricultural Fencing</a></li>
+          <li><a href="services.html#pergolas">Pergolas &amp; Structures</a></li>
+          <li><a href="services.html#site-work">Site Work &amp; Walls</a></li>
         </ul>
       </div>
       <div class="footer__col">

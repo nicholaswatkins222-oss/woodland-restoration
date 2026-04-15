@@ -107,6 +107,28 @@
     });
   }
 
+  // ── Contact page: auto-fill service from URL param ────────
+  // e.g. contact.html?service=fencing → pre-selects the fencing-residential option
+  const serviceSelect = document.getElementById('service');
+  if (serviceSelect) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceParam = urlParams.get('service');
+    if (serviceParam) {
+      const paramMap = {
+        'decks':             'deck',
+        'fencing':           'fencing-residential',
+        'fencing-commercial':'fencing-commercial',
+        'gates':             'gate',
+        'pergolas':          'pergola',
+        'site-work':         'site-work',
+      };
+      const targetValue = paramMap[serviceParam];
+      if (targetValue) {
+        serviceSelect.value = targetValue;
+      }
+    }
+  }
+
   // ── Contact form submission ───────────────────────────────
   const form = document.getElementById('contact-form');
   const successMsg = document.getElementById('form-success');
