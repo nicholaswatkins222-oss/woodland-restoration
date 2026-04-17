@@ -234,7 +234,7 @@
       }
 
       const searchJson = await searchRes.json();
-      console.log('[Google Reviews] searchText response:', searchJson);
+      console.log('[Google Reviews] searchText response:', JSON.stringify(searchJson));
       const place = searchJson.places && searchJson.places[0];
       if (!place) {
         console.error('[Google Reviews] no place found in response');
