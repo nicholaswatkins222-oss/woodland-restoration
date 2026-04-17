@@ -1,11 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 96" width="380" height="96">
   <defs>
     <style>
-      /* WOODLAND — dark forest green, slightly condensed */
       .lm { font-family: Georgia, serif; font-weight: 700; font-size: 48px; fill: #1A3510; letter-spacing: -1px; }
-      /* FENCE & DECK — warm brown, clearly different from WOODLAND */
       .ls { font-family: Georgia, serif; font-weight: 700; font-size: 14px; fill: #7B4828; letter-spacing: 2.5px; }
-      /* GENERAL CONSTRUCTION — noticeably lighter, creates hierarchy below the other two */
       .lt { font-family: Georgia, serif; font-weight: 600; font-size: 9.5px; fill: #8A8874; letter-spacing: 4px; }
     </style>
   </defs>
