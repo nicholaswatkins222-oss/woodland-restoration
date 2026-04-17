@@ -161,8 +161,7 @@
         const data = new FormData(form);
         const payload = Object.fromEntries(data.entries());
 
-        // TODO: Replace with real webhook URL when ready
-        const WEBHOOK_URL = '';
+        const WEBHOOK_URL = 'https://nicholaswatkins.app.n8n.cloud/webhook/woodland-contact';
 
         if (WEBHOOK_URL) {
           await fetch(WEBHOOK_URL, {
