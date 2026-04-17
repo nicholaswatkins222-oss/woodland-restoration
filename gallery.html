@@ -65,6 +65,11 @@
   <div class="container">
     <h2 id="gallery-heading" class="sr-only">Project Photos</h2>
 
+    <!-- Review Mode Toggle -->
+    <div style="text-align:right;margin-bottom:8px;">
+      <button id="review-toggle" onclick="toggleReview()" style="background:#e63946;color:#fff;border:none;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">🔍 Review Mode: OFF</button>
+    </div>
+
     <!-- Filter Tabs -->
     <div class="gallery-filters" role="group" aria-label="Filter projects by type">
       <button class="filter-btn active" data-filter="all" aria-pressed="true">All Projects</button>
@@ -537,5 +542,33 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+  function toggleReview() {
+    const btn = document.getElementById('review-toggle');
+    const active = document.body.classList.toggle('review-mode');
+    btn.textContent = active ? '🔍 Review Mode: ON' : '🔍 Review Mode: OFF';
+    btn.style.background = active ? '#2a9d8f' : '#e63946';
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      let label = item.querySelector('.review-label');
+      if (active) {
+        if (!label) {
+          const src = item.querySelector('img,video')?.getAttribute('src') || '';
+          const filename = src.split('/').pop();
+          const category = item.dataset.category;
+          label = document.createElement('div');
+          label.className = 'review-label';
+          label.style.cssText = 'position:absolute;top:6px;left:6px;right:6px;background:rgba(0,0,0,0.82);color:#fff;font-size:11px;font-weight:600;padding:4px 6px;border-radius:4px;z-index:10;word-break:break-all;line-height:1.3;pointer-events:none;';
+          label.innerHTML = '<span style="color:#facc15">[' + category + ']</span> ' + filename;
+          item.style.position = 'relative';
+          item.appendChild(label);
+        }
+        label.style.display = 'block';
+      } else if (label) {
+        label.style.display = 'none';
+      }
+    });
+  }
+</script>
 </body>
 </html>
