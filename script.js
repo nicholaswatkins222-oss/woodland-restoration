@@ -202,46 +202,52 @@
     // Skip if placeholder hasn't been replaced yet
     if (!apiKey || apiKey === 'API_KEY_HERE') return;
 
-    // Wire up "See all reviews" link
-    if (mapsUrl) {
-      const viewAllLink = section.querySelector('.google-view-all');
-      if (viewAllLink) viewAllLink.href = mapsUrl;
-    }
+    // Always wire up "See all reviews" link — independent of API success
+    const viewAllLink = section.querySelector('.google-view-all');
+    if (viewAllLink && mapsUrl) viewAllLink.href = mapsUrl;
 
     try {
-      // Step 1: Text search to find the place and get reviews in one call
-      const fields = 'places.rating,places.userRatingCount,places.reviews';
-      const res = await fetch(
+      // Step 1: Text search → get Place ID + rating + review count
+      const searchRes = await fetch(
         `https://places.googleapis.com/v1/places:searchText?key=${apiKey}`,
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-Goog-FieldMask': fields
+            'X-Goog-FieldMask': 'places.id,places.rating,places.userRatingCount'
           },
           body: JSON.stringify({ textQuery: 'Woodland Restoration LLC Hebron Indiana' })
         }
       );
-      if (!res.ok) return; // fall back to hardcoded cards silently
+      if (!searchRes.ok) return;
 
-      const json = await res.json();
-      const data = json.places && json.places[0];
-      if (!data) return;
+      const searchJson = await searchRes.json();
+      const place = searchJson.places && searchJson.places[0];
+      if (!place) return;
 
       // Update overall rating + count
       const scoreEl = section.querySelector('.google-overall-rating__score');
       const countEl = section.querySelector('.google-overall-rating__count');
-      const viewAllEl = section.querySelector('.google-view-all');
 
-      if (scoreEl && data.rating != null) {
-        scoreEl.textContent = data.rating.toFixed(1);
+      if (scoreEl && place.rating != null) {
+        scoreEl.textContent = place.rating.toFixed(1);
       }
-      if (countEl && data.userRatingCount != null) {
-        countEl.textContent = `based on ${data.userRatingCount} reviews`;
+      if (countEl && place.userRatingCount != null) {
+        countEl.textContent = `based on ${place.userRatingCount} reviews`;
       }
-      if (viewAllEl && data.userRatingCount != null) {
-        viewAllEl.innerHTML = viewAllEl.innerHTML.replace(/See all \d+ reviews/, `See all ${data.userRatingCount} reviews`);
+      if (viewAllLink && place.userRatingCount != null) {
+        viewAllLink.innerHTML = viewAllLink.innerHTML.replace(/See all \d+ reviews/, `See all ${place.userRatingCount} reviews`);
       }
+
+      // Step 2: Place Details → get reviews (only available here, not in searchText)
+      const detailsRes = await fetch(
+        `https://places.googleapis.com/v1/places/${place.id}?key=${apiKey}`,
+        { headers: { 'X-Goog-FieldMask': 'reviews' } }
+      );
+      if (!detailsRes.ok) return;
+
+      const detailsJson = await detailsRes.json();
+      const data = detailsJson;
 
       // Rebuild review cards
       if (!data.reviews || data.reviews.length === 0) return;
