@@ -207,58 +207,12 @@
     if (viewAllLink && mapsUrl) viewAllLink.href = mapsUrl;
 
     try {
-      // Step 1: Text search → get Place ID + rating + review count
-      const searchRes = await fetch(
-        `https://places.googleapis.com/v1/places:searchText?key=${apiKey}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Goog-FieldMask': 'places.id,places.rating,places.userRatingCount'
-          },
-          body: JSON.stringify({
-            textQuery: 'Woodland Restoration LLC',
-            locationBias: {
-              circle: {
-                center: { latitude: 41.4905055, longitude: -86.8545975 },
-                radius: 50000.0
-              }
-            }
-          })
-        }
-      );
-      if (!searchRes.ok) {
-        const errText = await searchRes.text();
-        console.error('[Google Reviews] searchText HTTP error:', searchRes.status, errText);
-        return;
-      }
-
-      const searchJson = await searchRes.json();
-      console.log('[Google Reviews] searchText response:', JSON.stringify(searchJson));
-      const place = searchJson.places && searchJson.places[0];
-      if (!place) {
-        console.error('[Google Reviews] no place found in response');
-        return;
-      }
-
-      // Update overall rating + count
-      const scoreEl = section.querySelector('.google-overall-rating__score');
-      const countEl = section.querySelector('.google-overall-rating__count');
-
-      if (scoreEl && place.rating != null) {
-        scoreEl.textContent = place.rating.toFixed(1);
-      }
-      if (countEl && place.userRatingCount != null) {
-        countEl.textContent = `based on ${place.userRatingCount} reviews`;
-      }
-      if (viewAllLink && place.userRatingCount != null) {
-        viewAllLink.innerHTML = viewAllLink.innerHTML.replace(/See all \d+ reviews/, `See all ${place.userRatingCount} reviews`);
-      }
-
-      // Step 2: Place Details → get reviews (only available here, not in searchText)
+      // Direct Place Details fetch using hardcoded Place ID (derived from Google Maps URL)
+      const placeId = 'ChIJa-hYO6GMEYgR9NzId8WVjCk';
+      const fields  = 'rating,userRatingCount,reviews';
       const detailsRes = await fetch(
-        `https://places.googleapis.com/v1/places/${place.id}?key=${apiKey}`,
-        { headers: { 'X-Goog-FieldMask': 'reviews' } }
+        `https://places.googleapis.com/v1/places/${placeId}?key=${apiKey}`,
+        { headers: { 'X-Goog-FieldMask': fields } }
       );
       if (!detailsRes.ok) {
         const errText = await detailsRes.text();
@@ -266,9 +220,22 @@
         return;
       }
 
-      const detailsJson = await detailsRes.json();
-      console.log('[Google Reviews] Place Details response:', detailsJson);
-      const data = detailsJson;
+      const data = await detailsRes.json();
+      console.log('[Google Reviews] Place Details response:', JSON.stringify(data));
+
+      // Update overall rating + count
+      const scoreEl = section.querySelector('.google-overall-rating__score');
+      const countEl = section.querySelector('.google-overall-rating__count');
+
+      if (scoreEl && data.rating != null) {
+        scoreEl.textContent = data.rating.toFixed(1);
+      }
+      if (countEl && data.userRatingCount != null) {
+        countEl.textContent = `based on ${data.userRatingCount} reviews`;
+      }
+      if (viewAllLink && data.userRatingCount != null) {
+        viewAllLink.innerHTML = viewAllLink.innerHTML.replace(/See all \d+ reviews/, `See all ${data.userRatingCount} reviews`);
+      }
 
       // Rebuild review cards
       if (!data.reviews || data.reviews.length === 0) return;
