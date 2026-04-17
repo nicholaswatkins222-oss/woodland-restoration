@@ -300,8 +300,8 @@
         }
       }
 
-    } catch (_) {
-      // Network error or API failure — hardcoded cards remain, no crash
+    } catch (err) {
+      console.error('[Google Reviews] fetch failed:', err);
     }
   }
 
