@@ -1,14 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 96" width="380" height="96">
   <defs>
     <style>
-      .lm { font-family: Georgia, serif; font-weight: 700; font-size: 48px; fill: #1A3510; letter-spacing: -1px; }
+      .lm-wood { font-family: Georgia, serif; font-weight: 700; font-size: 48px; fill: #8B5230; letter-spacing: -1px; }
+      .lm-land { font-family: Georgia, serif; font-weight: 700; font-size: 48px; fill: #2D6A1F; letter-spacing: -1px; }
       .ls { font-family: Georgia, serif; font-weight: 700; font-size: 14px; fill: #7B4828; letter-spacing: 2.5px; }
-      .lt { font-family: Georgia, serif; font-weight: 600; font-size: 9.5px; fill: #8A8874; letter-spacing: 4px; }
+      .lt { font-family: Georgia, serif; font-weight: 600; font-size: 9.5px; fill: #1A1A1A; letter-spacing: 4px; }
     </style>
   </defs>
 
   <!-- WOOD — anchored so right edge is 4px left of tree left edge (x=174) -->
-  <text x="170" y="54" text-anchor="end" class="lm">WOOD</text>
+  <text x="170" y="54" text-anchor="end" class="lm-wood">WOOD</text>
 
   <!-- Pine tree — spans cap-height of WOODLAND letters (y≈20 to y=54) -->
   <!-- translate(178,20): left edge 174, right edge 206, center x=190 -->
@@ -20,13 +21,13 @@
   </g>
 
   <!-- LAND — anchored so left edge is 4px right of tree right edge (x=206) -->
-  <text x="210" y="54" text-anchor="start" class="lm">LAND</text>
+  <text x="210" y="54" text-anchor="start" class="lm-land">LAND</text>
 
   <!-- FENCE & DECK — lines are dark brown, thick, stop well clear of text -->
   <!-- Text at 14px: cap-center ≈ y=70-(14×0.35)=65. Lines at y=65. -->
-  <line x1="28"  y1="65" x2="122" y2="65" stroke="#3D2010" stroke-width="1.8"/>
+  <line x1="28"  y1="65" x2="108" y2="65" stroke="#3D2010" stroke-width="1.8"/>
   <text x="190" y="70" text-anchor="middle" class="ls">FENCE &amp; DECK</text>
-  <line x1="258" y1="65" x2="352" y2="65" stroke="#3D2010" stroke-width="1.8"/>
+  <line x1="272" y1="65" x2="352" y2="65" stroke="#3D2010" stroke-width="1.8"/>
 
   <!-- GENERAL CONSTRUCTION — lighter gray-green, clearly subordinate -->
   <text x="190" y="84" text-anchor="middle" class="lt">GENERAL CONSTRUCTION</text>
