@@ -191,6 +191,116 @@
     });
   }
 
+  // ── Google Reviews: live fetch from Places API (New) ─────
+  async function loadGoogleReviews() {
+    const section = document.querySelector('.google-reviews-section');
+    if (!section) return;
+
+    const apiKey  = section.dataset.apiKey;
+    const mapsUrl = section.dataset.mapsUrl;
+
+    // Skip if placeholder hasn't been replaced yet
+    if (!apiKey || apiKey === 'API_KEY_HERE') return;
+
+    // Wire up "See all reviews" link
+    if (mapsUrl) {
+      const viewAllLink = section.querySelector('.google-view-all');
+      if (viewAllLink) viewAllLink.href = mapsUrl;
+    }
+
+    try {
+      // Step 1: Text search to find the place and get reviews in one call
+      const fields = 'places.rating,places.userRatingCount,places.reviews';
+      const res = await fetch(
+        `https://places.googleapis.com/v1/places:searchText?key=${apiKey}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Goog-FieldMask': fields
+          },
+          body: JSON.stringify({ textQuery: 'Woodland Restoration LLC Hebron Indiana' })
+        }
+      );
+      if (!res.ok) return; // fall back to hardcoded cards silently
+
+      const json = await res.json();
+      const data = json.places && json.places[0];
+      if (!data) return;
+
+      // Update overall rating + count
+      const scoreEl = section.querySelector('.google-overall-rating__score');
+      const countEl = section.querySelector('.google-overall-rating__count');
+      const viewAllEl = section.querySelector('.google-view-all');
+
+      if (scoreEl && data.rating != null) {
+        scoreEl.textContent = data.rating.toFixed(1);
+      }
+      if (countEl && data.userRatingCount != null) {
+        countEl.textContent = `based on ${data.userRatingCount} reviews`;
+      }
+      if (viewAllEl && data.userRatingCount != null) {
+        viewAllEl.innerHTML = viewAllEl.innerHTML.replace(/See all \d+ reviews/, `See all ${data.userRatingCount} reviews`);
+      }
+
+      // Rebuild review cards
+      if (!data.reviews || data.reviews.length === 0) return;
+
+      const starsSVG = `<svg width="12" height="12" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 01-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>`;
+
+      const delayClasses = ['', ' reveal-delay-1', ' reveal-delay-2', ' reveal-delay-3'];
+      const cards = data.reviews.slice(0, 4).map((review, i) => {
+        const name   = review.authorAttribution?.displayName || 'Google User';
+        const initial = name.charAt(0).toUpperCase();
+        const date   = review.relativePublishTimeDescription || '';
+        const rating = review.rating || 5;
+        const text   = review.text?.text || '';
+        const stars  = Array.from({ length: rating }, () =>
+          '<i class="fa-solid fa-star" aria-hidden="true"></i>').join('');
+
+        return `
+        <div class="google-review-card reveal${delayClasses[i]}">
+          <div class="google-review-card__top">
+            <div class="google-review-card__avatar" aria-hidden="true">${initial}</div>
+            <div>
+              <div class="google-review-card__name">${name}</div>
+              <div class="google-review-card__date">${date}</div>
+            </div>
+          </div>
+          <div class="google-review-card__stars" aria-label="${rating} out of 5 stars">${stars}</div>
+          <p class="google-review-card__text">"${text}"</p>
+          <div class="google-review-card__footer" aria-hidden="true">
+            ${starsSVG}
+            <span>Google Review</span>
+          </div>
+        </div>`;
+      });
+
+      const grid = section.querySelector('.google-reviews-grid');
+      if (grid) {
+        grid.innerHTML = cards.join('');
+        // Re-run reveal observer on new cards
+        const newCards = grid.querySelectorAll('.reveal');
+        if (newCards.length > 0) {
+          const obs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+          newCards.forEach(el => obs.observe(el));
+        }
+      }
+
+    } catch (_) {
+      // Network error or API failure — hardcoded cards remain, no crash
+    }
+  }
+
+  loadGoogleReviews();
+
   // ── Smooth scroll for anchor links ───────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
