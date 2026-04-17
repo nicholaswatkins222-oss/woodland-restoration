@@ -219,11 +219,19 @@
           body: JSON.stringify({ textQuery: 'Woodland Restoration LLC Hebron Indiana' })
         }
       );
-      if (!searchRes.ok) return;
+      if (!searchRes.ok) {
+        const errText = await searchRes.text();
+        console.error('[Google Reviews] searchText HTTP error:', searchRes.status, errText);
+        return;
+      }
 
       const searchJson = await searchRes.json();
+      console.log('[Google Reviews] searchText response:', searchJson);
       const place = searchJson.places && searchJson.places[0];
-      if (!place) return;
+      if (!place) {
+        console.error('[Google Reviews] no place found in response');
+        return;
+      }
 
       // Update overall rating + count
       const scoreEl = section.querySelector('.google-overall-rating__score');
@@ -244,9 +252,14 @@
         `https://places.googleapis.com/v1/places/${place.id}?key=${apiKey}`,
         { headers: { 'X-Goog-FieldMask': 'reviews' } }
       );
-      if (!detailsRes.ok) return;
+      if (!detailsRes.ok) {
+        const errText = await detailsRes.text();
+        console.error('[Google Reviews] Place Details HTTP error:', detailsRes.status, errText);
+        return;
+      }
 
       const detailsJson = await detailsRes.json();
+      console.log('[Google Reviews] Place Details response:', detailsJson);
       const data = detailsJson;
 
       // Rebuild review cards
