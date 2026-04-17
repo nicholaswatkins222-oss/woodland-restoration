@@ -216,7 +216,15 @@
             'Content-Type': 'application/json',
             'X-Goog-FieldMask': 'places.id,places.rating,places.userRatingCount'
           },
-          body: JSON.stringify({ textQuery: 'Woodland Restoration LLC Hebron Indiana' })
+          body: JSON.stringify({
+            textQuery: 'Woodland Restoration LLC',
+            locationBias: {
+              circle: {
+                center: { latitude: 41.4905055, longitude: -86.8545975 },
+                radius: 50000.0
+              }
+            }
+          })
         }
       );
       if (!searchRes.ok) {
