@@ -79,8 +79,8 @@
                 <input type="text" id="first-name" name="first_name" required autocomplete="given-name" placeholder="Ross">
               </div>
               <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last_name" autocomplete="family-name" placeholder="Smith">
+                <label for="last-name">Last Name <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
+                <input type="text" id="last-name" name="last_name" required autocomplete="family-name" placeholder="Smith">
               </div>
             </div>
             <div class="form-row">
@@ -89,8 +89,8 @@
                 <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
               </div>
               <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(800) 555-0100">
+                <label for="phone">Phone Number <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
+                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="(800) 555-0100">
               </div>
             </div>
             <div class="form-group">
@@ -107,8 +107,8 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="address">Project Address or City</label>
-              <input type="text" id="address" name="address" autocomplete="street-address" placeholder="e.g., 123 Main St, Hebron IN or just &quot;Valparaiso&quot;">
+              <label for="address">Project Address or City <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
+              <input type="text" id="address" name="address" required autocomplete="street-address" placeholder="e.g., 123 Main St, Hebron IN or just &quot;Valparaiso&quot;">
             </div>
             <div class="form-group">
               <label for="message">Tell Us About Your Project <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
@@ -116,13 +116,13 @@
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="start-date">Estimated Start Date</label>
-                <input type="text" id="start-date" name="start_date" placeholder="e.g. Spring 2026, ASAP, Not sure yet">
+                <label for="start-date">Estimated Start Date <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
+                <input type="text" id="start-date" name="start_date" required placeholder="e.g. Spring 2026, ASAP, Not sure yet">
               </div>
               <div class="form-group">
-                <label for="existing-structure">Existing Structure to Remove?</label>
-                <select id="existing-structure" name="existing_structure">
-                  <option value="" selected>Select…</option>
+                <label for="existing-structure">Existing Structure to Remove? <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
+                <select id="existing-structure" name="existing_structure" required>
+                  <option value="" disabled selected>Select…</option>
                   <option value="yes">Yes — needs demo &amp; haul-away</option>
                   <option value="no">No — new install only</option>
                   <option value="not-sure">Not sure</option>
@@ -130,8 +130,8 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="budget">Approximate Budget</label>
-              <input type="text" id="budget" name="budget" placeholder="e.g. $5,000–$10,000 or 'not sure yet'">
+              <label for="budget">Approximate Budget <span aria-hidden="true" style="color:var(--green-mid)">*</span></label>
+              <input type="text" id="budget" name="budget" required placeholder="e.g. $5,000–$10,000 or 'not sure yet'">
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px">
               <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
@@ -208,13 +208,9 @@
 <section class="vendors-section" aria-labelledby="vendors-heading">
   <div class="container">
     <div class="section-header">
-      <div class="vendors-coming">
-        <i class="fa-solid fa-clock" aria-hidden="true"></i>
-        Coming Soon
-      </div>
       <div class="section-divider"></div>
       <h2 id="vendors-heading">Trusted Vendor Resources</h2>
-      <p style="color:var(--text-mid);max-width:520px">We'll be adding direct links to our trusted material suppliers and partners — the same sources we use on every job. Check back soon.</p>
+      <p style="color:var(--text-mid);max-width:520px">Direct links to our trusted material suppliers and partners — the same sources we use on every job.</p>
     </div>
     <div class="vendors-grid">
       <div class="vendor-card">
@@ -223,14 +219,16 @@
         <p>Trusted supplier links coming soon</p>
       </div>
       <div class="vendor-card">
-        <div class="vendor-card__icon"><i class="fa-solid fa-grip-lines-vertical" aria-hidden="true"></i></div>
+        <div class="vendor-card__icon"><i class="fa-solid fa-fence" aria-hidden="true"></i></div>
         <h4>Fencing Materials</h4>
-        <p>Trusted supplier links coming soon</p>
+        <p>Gate operators &amp; automation systems</p>
+        <a href="https://www.liftmaster.com" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:8px;font-size:0.875rem;color:var(--green-dark);font-weight:600;">Visit LiftMaster →</a>
       </div>
       <div class="vendor-card">
         <div class="vendor-card__icon"><i class="fa-solid fa-door-open" aria-hidden="true"></i></div>
         <h4>Gate &amp; Hardware</h4>
-        <p>Trusted supplier links coming soon</p>
+        <p>Gate operators &amp; automation systems</p>
+        <a href="https://www.liftmaster.com" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:8px;font-size:0.875rem;color:var(--green-dark);font-weight:600;">Visit LiftMaster →</a>
       </div>
       <div class="vendor-card">
         <div class="vendor-card__icon"><i class="fa-solid fa-industry" aria-hidden="true"></i></div>
@@ -283,7 +281,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span>&copy; 2025 Woodland Restoration LLC. All rights reserved.</span>
+      <span>&copy; 2026 Woodland Restoration LLC. All rights reserved.</span>
       <span>BBB A+ Accredited &nbsp;·&nbsp; 5-Year Workmanship Guarantee</span>
     </div>
   </div>
