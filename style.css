@@ -46,7 +46,7 @@ body {
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; touch-action: manipulation; }
 
 /* ── Typography ── */
 h1, h2, h3, h4 {
@@ -130,6 +130,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.02em;
+  touch-action: manipulation;
   transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
               box-shadow 0.18s ease,
               background 0.18s ease;
@@ -273,6 +274,10 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   transition: color 0.15s ease;
 }
 .mobile-menu a:hover { color: var(--green-mid); }
+.mobile-menu .btn-primary {
+  color: var(--white);
+  border-bottom: none;
+}
 .mobile-menu__close {
   position: absolute;
   top: 24px;
@@ -1591,6 +1596,21 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   /* Hamburger + close button: 44×44px minimum tap target */
   .navbar__hamburger { padding: 11px 10px; min-width: 44px; min-height: 44px; justify-content: center; }
   .mobile-menu__close { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+
+  /* Fix 1: Logo shrinks to fit 68px scrolled navbar (was 80px — overflowed on scroll) */
+  .navbar__logo img, .navbar__logo svg { height: 52px; }
+
+  /* Fix 3: Use dynamic viewport height so hero fills screen with mobile browser chrome visible */
+  .hero { min-height: 100dvh; }
+
+  /* Fix 7: Mobile menu CTA button full-width */
+  .mobile-menu .btn { width: 100%; justify-content: center; }
+
+  /* Fix 8: Inner page hero — 140px top padding is too tall on a phone */
+  .page-hero { padding: 100px 0 48px; }
+
+  /* Fix 2: Article tables — scroll horizontally rather than cause page overflow */
+  .article-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
 
 /* ── Small Phone (320–480px) ── */
@@ -1641,6 +1661,12 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 
   /* Blog cards */
   .blog-card__body { padding: 18px 16px; }
+
+  /* Fix 6: Tighten container padding — 24px each side leaves only 272px content on a 320px screen */
+  .container { padding: 0 16px; }
+
+  /* Fix 4: CTA banner buttons stack full-width instead of staying inline-flex width */
+  .cta-banner .btn { flex: 1 1 100%; }
 }
 
 /* ============================================================
