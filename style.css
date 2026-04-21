@@ -1559,7 +1559,12 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 }
 
 @media (max-width: 768px) {
+  /* Tighter navbar on mobile — 100px is too tall */
+  :root { --nav-h: 72px; }
+  .navbar__logo img, .navbar__logo svg { height: 52px; }
+
   .section { padding: 64px 0; }
+  .section-header { margin-bottom: 40px; }
   .navbar__nav, .navbar__cta { display: none; }
   .navbar__hamburger { display: flex; }
   .services-grid { grid-template-columns: 1fr; }
@@ -1580,6 +1585,16 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   .google-reviews-grid { grid-template-columns: 1fr; }
   .google-rating-header__left { flex-direction: column; align-items: flex-start; gap: 12px; }
 
+  /* Google reviews: fix overflow + reduce section padding */
+  .google-reviews-section { padding: 56px 0; }
+  .google-overall-rating__count { white-space: normal; }
+  .google-rating-header { margin-bottom: 32px; }
+  /* "See all reviews" full-width on mobile */
+  .google-view-all { width: 100%; justify-content: center; }
+
+  /* CTA banner: less vertical padding on mobile */
+  .cta-banner { padding: 56px 0; }
+
   /* iOS Safari: auto-zooms any input with font-size < 16px */
   .form-group input,
   .form-group select,
@@ -1597,19 +1612,16 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   .navbar__hamburger { padding: 11px 10px; min-width: 44px; min-height: 44px; justify-content: center; }
   .mobile-menu__close { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
 
-  /* Fix 1: Logo shrinks to fit 68px scrolled navbar (was 80px — overflowed on scroll) */
-  .navbar__logo img, .navbar__logo svg { height: 52px; }
-
-  /* Fix 3: Use dynamic viewport height so hero fills screen with mobile browser chrome visible */
+  /* Use dynamic viewport height so hero fills screen with mobile browser chrome visible */
   .hero { min-height: 100dvh; }
 
-  /* Fix 7: Mobile menu CTA button full-width */
+  /* Mobile menu CTA button full-width */
   .mobile-menu .btn { width: 100%; justify-content: center; }
 
-  /* Fix 8: Inner page hero — 140px top padding is too tall on a phone */
+  /* Inner page hero — 140px top padding is too tall on a phone */
   .page-hero { padding: 100px 0 48px; }
 
-  /* Fix 2: Article tables — scroll horizontally rather than cause page overflow */
+  /* Article tables — scroll horizontally rather than cause page overflow */
   .article-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
 
@@ -1618,11 +1630,11 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 
   /* Section rhythm */
   .section { padding: 48px 0; }
-  .section-header { margin-bottom: 36px; }
+  .section-header { margin-bottom: 32px; }
 
   /* Hero: full-width CTA buttons, tighter spacing */
   .hero__content { padding: 0 4px; }
-  .hero__badge { margin-bottom: 16px; }
+  .hero__badge { margin-bottom: 16px; font-size: 0.72rem; }
   .hero__sub { font-size: 1rem; margin-bottom: 24px; }
   .hero__actions { align-items: stretch; }
   .hero__actions .btn { justify-content: center; width: 100%; }
@@ -1630,6 +1642,18 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   /* Trust bar: restore 2-column (overrides 768px 1-col rule) */
   .trust-bar__grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .trust-item { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+  .trust-item__icon { width: 40px; height: 40px; font-size: 1rem; }
+  .trust-item__text strong { font-size: 0.82rem; }
+  .trust-item__text span { font-size: 0.73rem; }
+
+  /* Service cards: reduce padding on small screens */
+  .service-card { padding: 22px 20px; }
+
+  /* Features: single column, left-aligned (centered looks odd at full width) */
+  .features-grid { grid-template-columns: 1fr; gap: 20px; }
+  .feature-item { text-align: left; display: flex; align-items: flex-start; gap: 16px; }
+  .feature-item__icon { margin: 0; flex-shrink: 0; width: 52px; height: 52px; font-size: 1.2rem; }
+  .feature-item h3 { font-size: 1rem; }
 
   /* Testimonials: reduce card padding */
   .testimonial-card { padding: 22px 20px; }
@@ -1646,9 +1670,6 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   .gallery-filters::-webkit-scrollbar { display: none; }
   .filter-btn { flex-shrink: 0; padding: 7px 14px; font-size: 0.78rem; }
 
-  /* Features: single column at tiny screens */
-  .features-grid { grid-template-columns: 1fr; }
-
   /* Process steps: single column */
   .process-grid { grid-template-columns: 1fr; }
 
@@ -1662,11 +1683,18 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   /* Blog cards */
   .blog-card__body { padding: 18px 16px; }
 
-  /* Fix 6: Tighten container padding — 24px each side leaves only 272px content on a 320px screen */
+  /* Tighten container padding — 24px each side leaves only 272px content on a 320px screen */
   .container { padding: 0 16px; }
 
-  /* Fix 4: CTA banner buttons stack full-width instead of staying inline-flex width */
+  /* CTA banner buttons stack full-width instead of staying inline-flex width */
   .cta-banner .btn { flex: 1 1 100%; }
+  .cta-banner { padding: 48px 0; }
+
+  /* Google reviews: tighter on small screens */
+  .google-reviews-section { padding: 44px 0; }
+  .google-rating-header { padding-bottom: 20px; margin-bottom: 24px; }
+  .google-review-card { padding: 18px 16px; }
+  .google-overall-rating__score { font-size: 1.6rem; }
 }
 
 /* ============================================================
