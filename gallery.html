@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Gallery | Woodland Restoration LLC</title>
-  <meta name="description" content="Browse completed deck, fencing, gate, pergola, and retaining wall projects by Woodland Restoration LLC — serving Lake, LaPorte, and Porter counties.">
+  <title>Project Gallery | Woodland Fence and Deck</title>
+  <meta name="description" content="Browse completed deck, fencing, gate, pergola, and retaining wall projects by Woodland Fence and Deck — serving Lake, LaPorte, and Porter counties.">
   <link rel="icon" type="image/svg+xml" href="brand_assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,8 +17,8 @@
 <!-- NAVBAR -->
 <header class="navbar" role="banner">
   <div class="navbar__inner">
-    <a href="index.html" class="navbar__logo" aria-label="Woodland Restoration — Home">
-      <img src="brand_assets/logo.svg" alt="Woodland Restoration LLC">
+    <a href="index.html" class="navbar__logo" aria-label="Woodland Fence and Deck — Home">
+      <img src="brand_assets/logo.png" alt="Woodland Fence and Deck">
     </a>
     <nav class="navbar__nav" role="navigation" aria-label="Main navigation">
       <a href="index.html">Home</a>
@@ -82,12 +82,6 @@
       <!-- Decks -->
       <div class="gallery-item reveal" data-category="decks">
         <img src="Website_images/decks/20160515_103937.jpg" alt="Multi-platform wood deck with metal railings" loading="lazy">
-        <div class="gallery-item__overlay">
-          <span class="gallery-item__tag">Decks</span>
-        </div>
-      </div>
-      <div class="gallery-item reveal reveal-delay-1" data-category="decks">
-        <img src="Website_images/decks/20160507_191415.jpg" alt="Large wood deck under construction with framed steps" loading="lazy">
         <div class="gallery-item__overlay">
           <span class="gallery-item__tag">Decks</span>
         </div>
@@ -172,18 +166,6 @@
       <!-- Pergolas -->
       <div class="gallery-item reveal reveal-delay-2" data-category="pergolas">
         <img src="Website_images/gates/FB_IMG_1528506984317.jpg" alt="Finished black metal arched pergola with string lights over composite deck" loading="lazy">
-        <div class="gallery-item__overlay">
-          <span class="gallery-item__tag">Pergolas</span>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="pergolas">
-        <img src="Website_images/pergolas/20180308_124304.jpg" alt="Wood pergola frame under construction on residential home" loading="lazy">
-        <div class="gallery-item__overlay">
-          <span class="gallery-item__tag">Pergolas</span>
-        </div>
-      </div>
-      <div class="gallery-item reveal reveal-delay-1" data-category="pergolas">
-        <img src="Website_images/pergolas/20180314_110548.jpg" alt="Covered outdoor structure under construction with deck and stairs" loading="lazy">
         <div class="gallery-item__overlay">
           <span class="gallery-item__tag">Pergolas</span>
         </div>
@@ -458,9 +440,6 @@
       <div class="gallery-item reveal" data-category="fencing"><img src="Website_images/uncategorized/20200630_180611.jpg" alt="Decorative metal privacy screen panels" loading="lazy"><div class="gallery-item__overlay"><span class="gallery-item__tag">Fencing</span></div></div>
       <div class="gallery-item reveal reveal-delay-1" data-category="fencing"><img src="Website_images/uncategorized/20200630_180659.jpg" alt="Decorative metal privacy screen panels" loading="lazy"><div class="gallery-item__overlay"><span class="gallery-item__tag">Fencing</span></div></div>
 
-      <!-- Pergolas (from uncategorized) -->
-      <div class="gallery-item reveal" data-category="decks"><img src="Website_images/uncategorized/20200917_152221.jpg" alt="Pergola construction project" loading="lazy"><div class="gallery-item__overlay"><span class="gallery-item__tag">Decks</span></div></div>
-      <div class="gallery-item reveal reveal-delay-1" data-category="decks"><img src="Website_images/uncategorized/20200929_105050.jpg" alt="Pergola construction project" loading="lazy"><div class="gallery-item__overlay"><span class="gallery-item__tag">Decks</span></div></div>
 
     </div><!-- /gallery-grid -->
 
@@ -473,7 +452,7 @@
     <p class="section-label">Start Your Project</p>
     <div class="section-divider c"></div>
     <h2 id="gallery-cta-heading">Have a Project in Mind?</h2>
-    <p style="color:var(--text-mid);max-width:480px;margin:0 auto 32px">Get a free on-site estimate and see what Woodland Restoration can build for you.</p>
+    <p style="color:var(--text-mid);max-width:480px;margin:0 auto 32px">Get a free on-site estimate and see what Woodland Fence and Deck can build for you.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
       <a href="contact.html" class="btn btn-primary">
         <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
@@ -488,13 +467,43 @@
 </section>
 </main>
 
+<!--
+  REMOVED PHOTOS — construction/before/in-progress (2026-04-20)
+  ─────────────────────────────────────────────────────────────────
+  1. Website_images/decks/20160507_191415.jpg
+     Alt: "Large wood deck under construction with framed steps"
+     Reason: explicitly labeled under construction
+
+  2. Website_images/pergolas/20180308_124304.jpg
+     Alt: "Wood pergola frame under construction on residential home"
+     Reason: explicitly labeled under construction
+
+  3. Website_images/pergolas/20180314_110548.jpg
+     Alt: "Covered outdoor structure under construction with deck and stairs"
+     Reason: explicitly labeled under construction
+
+  4. Website_images/uncategorized/20200917_152221.jpg
+     Alt: "Pergola construction project"
+     Reason: alt text indicates construction-phase shot
+
+  5. Website_images/uncategorized/20200929_105050.jpg
+     Alt: "Pergola construction project"
+     Reason: alt text indicates construction-phase shot
+
+  ⚠ NEEDS MANUAL VISUAL REVIEW
+  The bulk of uncategorized photos use generic alt text ("Deck construction project",
+  "Wood fence installation") that gives no signal about photo state. Those entries
+  were left in place — Ross should scroll through and flag any remaining before/in-progress
+  shots so they can be removed in a follow-up pass.
+-->
+
 <!-- FOOTER -->
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
         <div class="footer__logo">
-          <img src="brand_assets/logo.svg" alt="Woodland Restoration LLC">
+          <img src="brand_assets/logo.png" alt="Woodland Fence and Deck">
         </div>
         <p>Custom decks, fencing, gates, pergolas, and retaining walls built with craft and guaranteed for 5 years. Serving Lake, LaPorte, and Porter counties since 2015.</p>
       </div>
@@ -523,14 +532,14 @@
         <h4>Contact</h4>
         <address>
           <a href="tel:2195093078">(219) 509-3078</a><br>
-          <a href="mailto:WoodlandRestorationLLC@gmail.com">WoodlandRestorationLLC@gmail.com</a><br><br>
+          <a href="mailto:RossFence@aol.com">RossFence@aol.com</a><br><br>
           Hebron, Indiana<br>
           Serving Lake, LaPorte &amp; Porter Counties
         </address>
       </div>
     </div>
     <div class="footer__bottom">
-      <span>&copy; 2026 Woodland Restoration LLC. All rights reserved.</span>
+      <span>&copy; 2026 Woodland Fence and Deck. All rights reserved.</span>
       <span>BBB A+ Accredited &nbsp;·&nbsp; 5-Year Workmanship Guarantee</span>
     </div>
   </div>

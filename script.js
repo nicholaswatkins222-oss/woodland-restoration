@@ -308,4 +308,110 @@
     });
   });
 
+  // ══════════════════════════════════════════════════════════
+  // TEMPORARY: Gallery flag tool — used once for cleanup, then removed
+  // ══════════════════════════════════════════════════════════
+  (function setupFlagTool() {
+    const grid = document.querySelector('.gallery-grid');
+    if (!grid) return;
+
+    const STORAGE_KEY = 'woodland-flagged-images';
+    const flagged = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
+    const save = () => localStorage.setItem(STORAGE_KEY, JSON.stringify([...flagged]));
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      const img = item.querySelector('img');
+      if (!img) return;
+      const src = img.getAttribute('src');
+
+      const btn = document.createElement('button');
+      btn.className = 'flag-btn';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Flag image for removal');
+      btn.innerHTML = '<i class="fa-solid fa-flag" aria-hidden="true"></i>';
+
+      if (flagged.has(src)) {
+        btn.classList.add('flagged');
+        item.classList.add('item-flagged');
+      }
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (flagged.has(src)) {
+          flagged.delete(src);
+          btn.classList.remove('flagged');
+          item.classList.remove('item-flagged');
+        } else {
+          flagged.add(src);
+          btn.classList.add('flagged');
+          item.classList.add('item-flagged');
+        }
+        save();
+        updatePanel();
+      });
+
+      item.appendChild(btn);
+    });
+
+    const panel = document.createElement('div');
+    panel.className = 'flag-panel';
+    panel.innerHTML = `
+      <div class="flag-panel__count"><i class="fa-solid fa-flag"></i><span id="flag-count">0</span> flagged</div>
+      <div class="flag-panel__actions">
+        <button type="button" id="flag-show">Show list</button>
+        <button type="button" id="flag-copy">Copy</button>
+        <button type="button" id="flag-clear">Clear all</button>
+      </div>
+      <div class="flag-panel__list" id="flag-list" hidden></div>
+    `;
+    document.body.appendChild(panel);
+
+    const countEl = panel.querySelector('#flag-count');
+    const listEl  = panel.querySelector('#flag-list');
+
+    function renderList() {
+      if (flagged.size === 0) {
+        listEl.innerHTML = '<em>No images flagged yet.</em>';
+        return;
+      }
+      listEl.innerHTML = [...flagged].sort()
+        .map(src => `<div>${src}</div>`).join('');
+    }
+
+    function updatePanel() {
+      countEl.textContent = ' ' + flagged.size + ' ';
+      if (!listEl.hidden) renderList();
+    }
+
+    panel.querySelector('#flag-show').addEventListener('click', () => {
+      listEl.hidden = !listEl.hidden;
+      if (!listEl.hidden) renderList();
+    });
+
+    panel.querySelector('#flag-copy').addEventListener('click', async () => {
+      const text = [...flagged].sort().join('\n');
+      const btn = panel.querySelector('#flag-copy');
+      const orig = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = orig; }, 1500);
+      } catch (e) {
+        prompt('Copy this list:', text);
+      }
+    });
+
+    panel.querySelector('#flag-clear').addEventListener('click', () => {
+      if (!confirm('Clear all flags?')) return;
+      flagged.clear();
+      save();
+      document.querySelectorAll('.flag-btn.flagged').forEach(b => b.classList.remove('flagged'));
+      document.querySelectorAll('.item-flagged').forEach(b => b.classList.remove('item-flagged'));
+      updatePanel();
+    });
+
+    updatePanel();
+  })();
+
 })();
