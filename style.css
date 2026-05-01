@@ -620,6 +620,13 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   max-width: 280px;
   line-height: 1.7;
 }
+.footer__logo {
+  display: inline-block;
+  background: var(--white);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
 .footer__logo img,
 .footer__logo svg {
   height: 72px;
